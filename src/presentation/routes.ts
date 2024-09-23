@@ -1,18 +1,14 @@
 import { Router } from "express";
+import { TodosController } from "./todos/controller";
+import { TodoRoutes } from "./todos/routes";
 
-//router de la aplicacion, se utiliza a traves de un middleware
-//TODO: Crear controlador para delegar responsabilidades
+//router general de la aplicacion, se utiliza a traves de un middleware
 export class AppRoutes {
   static get routes(): Router {
     const router = Router();
 
-    router.get("/api/todos", (req, res) => {
-      res.json([
-        { id: 1, text: "Buy milk", createdAt: new Date().getTime() },
-        { id: 2, text: "Wash car", createdAt: new Date().getTime() },
-        { id: 3, text: "Study Node", createdAt: new Date().getTime() },
-      ]);
-    });
+    //Utilizamos la ruta + controlador llamando a su metodo
+    router.use("/api/todos", TodoRoutes.routes);
 
     return router;
   }

@@ -10,6 +10,7 @@ interface Options {
 //patron presentador de nuestro servidor
 export class Server {
   //podria cambiar express por cualquier otro framework sin cambiar toda la app
+  //Propiedades de clase, accedo a ellas mediante this
   private app = express();
   private readonly port: number;
   private readonly routes: Router;
